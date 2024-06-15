@@ -2,3 +2,4 @@ payload:
   - '.+baidu.com'
   - '.+akamaihd.net'
   - '.+yulei.icu'
+  - '.+taobao.com'
