@@ -5,3 +5,4 @@ payload:
   - '.+taobao.com'
   - '.+alipay.com'
   - '.+yulei.icu'
+  - '.+weibo.com'
