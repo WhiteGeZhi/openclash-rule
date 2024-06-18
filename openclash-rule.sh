@@ -50,6 +50,8 @@ if [ ${#failed_downloads[@]} -gt 0 ]; then
 else
   log "All rules have been successfully downloaded."
 
+  git config http.postBuffer 157286400
+
   # 添加更改到 Git
   git add .
   # 提交更改
