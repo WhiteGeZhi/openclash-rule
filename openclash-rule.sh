@@ -4,6 +4,7 @@
 BASE_URL="https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/"
 OUTPUT_DIR="/root/Personal-project/openclash-rule/auto-update-rule/"
 LOG_FILE="/var/log/my_script.log"
+GIT_REPO_DIR="/root/Personal-project/openclash-rule/"
 
 # 初始化日志
 > "$LOG_FILE"
@@ -48,6 +49,25 @@ if [ ${#failed_downloads[@]} -gt 0 ]; then
   log "The following rules failed to download: ${failed_downloads[*]}"
 else
   log "All rules have been successfully downloaded."
+
+  # 添加更改到 Git
+  git add .
+  # 提交更改
+  commit_message="Updated rules on $(date '+%Y-%m-%d %H:%M:%S')"
+  if git commit -m "$commit_message"; then
+    log "Committed changes to Git with message: $commit_message"
+  else
+    log "Failed to commit changes to Git"
+    exit 1
+  fi
+
+  # 推送更改
+  if git push; then
+    log "Pushed changes to remote repository"
+  else
+    log "Failed to push changes to remote repository"
+    exit 1
+  fi
 fi
 
 # 清理和结束
