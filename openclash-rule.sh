@@ -27,6 +27,7 @@ download_and_save() {
 
   if wget --no-check-certificate -nv -O "$target_path" "$full_url"; then
     log "Downloaded ${rule_name}.txt successfully"
+    return 0
   else
     log "Failed to download ${rule_name}.txt"
     return 1 # 返回非零值表示失败
@@ -50,25 +51,50 @@ if [ ${#failed_downloads[@]} -gt 0 ]; then
 else
   log "All rules have been successfully downloaded."
 
+  # 进入 Git 仓库目录
+  cd "$GIT_REPO_DIR" || { log "Failed to change directory to $GIT_REPO_DIR"; exit 1; }
+
+  # 配置 http.postBuffer
   git config http.postBuffer 157286400
 
-  # 添加更改到 Git
-  git add .
-  # 提交更改
-  commit_message="Updated rules on $(date '+%Y-%m-%d %H:%M:%S')"
-  if git commit -m "$commit_message"; then
-    log "Committed changes to Git with message: $commit_message"
-  else
-    log "Failed to commit changes to Git"
-    exit 1
+  # 分批次添加、提交和推送
+  batch1=("auto-update-rule/apple.txt" "auto-update-rule/applications.txt" "auto-update-rule/cncidr.txt" "auto-update-rule/direct.txt" "auto-update-rule/gfw.txt" "auto-update-rule/google.txt")
+  batch2=("auto-update-rule/icloud.txt" "auto-update-rule/lancidr.txt" "auto-update-rule/private.txt" "auto-update-rule/proxy.txt" "auto-update-rule/reject.txt" "auto-update-rule/telegramcidr.txt" "auto-update-rule/tld-not-cn.txt")
+
+  # 提交并推送第一批次
+  if [ ${#batch1[@]} -gt 0 ]; then
+    git add "${batch1[@]}" || { log "Failed to add batch1 changes to Git"; exit 1; }
+    commit_message="Updated rules (batch1) on $(date '+%Y-%m-%d %H:%M:%S')"
+    if git commit -m "$commit_message"; then
+      log "Committed batch1 changes to Git with message: $commit_message"
+      if git push; then
+        log "Pushed batch1 changes to remote repository"
+      else
+        log "Failed to push batch1 changes to remote repository"
+        exit 1
+      fi
+    else
+      log "Failed to commit batch1 changes to Git"
+      exit 1
+    fi
   fi
 
-  # 推送更改
-  if git push; then
-    log "Pushed changes to remote repository"
-  else
-    log "Failed to push changes to remote repository"
-    exit 1
+  # 提交并推送第二批次
+  if [ ${#batch2[@]} -gt 0 ]; then
+    git add "${batch2[@]}" || { log "Failed to add batch2 changes to Git"; exit 1; }
+    commit_message="Updated rules (batch2) on $(date '+%Y-%m-%d %H:%M:%S')"
+    if git commit -m "$commit_message"; then
+      log "Committed batch2 changes to Git with message: $commit_message"
+      if git push; then
+        log "Pushed batch2 changes to remote repository"
+      else
+        log "Failed to push batch2 changes to remote repository"
+        exit 1
+      fi
+    else
+      log "Failed to commit batch2 changes to Git"
+      exit 1
+    fi
   fi
 fi
 
