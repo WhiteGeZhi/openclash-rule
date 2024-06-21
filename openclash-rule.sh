@@ -14,6 +14,8 @@ log() {
   echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" | tee -a "$LOG_FILE"
 }
 
+git pull origin dev
+
 # 确保输出目录存在
 mkdir -p "$OUTPUT_DIR" || { log "Failed to create output directory: $OUTPUT_DIR"; exit 1; }
 
