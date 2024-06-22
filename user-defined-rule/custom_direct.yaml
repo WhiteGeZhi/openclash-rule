@@ -1,11 +1,15 @@
+# DOMAIN,www.google.com,policy 将 www.google.com 路由到 policy.
+# DOMAIN-SUFFIX,youtube.com,policy 将任何以 youtube.com 结尾的域名路由到 policy.  在这种情况下, www.youtube.com 和 foo.bar.youtube.com 都将路由到 policy.
+# DOMAIN-KEYWORD,ads,policy 将任何包含 ads 的域名路由到 policy.
+
 payload:
-  - '.+baidu.com'
-  - '.+akamaihd.net'
-  - '.+yulei.icu'
-  - '.+taobao.com'
-  - '.+alipay.com'
-  - '.+yulei.icu'
-  - '.+weibo.com'
+  - '+.baidu.com'
+  - '+.akamaihd.net'
+  - '+.yulei.icu'
+  - '+.taobao.com'
+  - '+.alipay.com'
+  - '+.yulei.icu'
+  - '+.weibo.com'
   - 'mail.163.com'
   - 'mail.qq.com'
   - 'mail.sina.com.cn'
