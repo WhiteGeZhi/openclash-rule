@@ -36,7 +36,7 @@ payload:
   - '+.cloudflare.com'
   - '+.xsijishe.com'
   - '+.missav.com'
-  - '+.u9a9.+'
-  - '+.u9img.+'
+  - DOMAIN-KEYWORD,u9a9
+  - DOMAIN-KEYWORD,u9img
   - 'pixel.onaudience.com'
 
