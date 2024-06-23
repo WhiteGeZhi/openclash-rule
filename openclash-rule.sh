@@ -14,8 +14,6 @@ log() {
   echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" | tee -a "$LOG_FILE"
 }
 
-git pull origin dev
-
 # 确保输出目录存在
 mkdir -p "$OUTPUT_DIR" || { log "Failed to create output directory: $OUTPUT_DIR"; exit 1; }
 
@@ -34,6 +32,8 @@ download_and_save() {
     return 1 # 返回非零值表示失败
   fi
 }
+
+git pull
 
 # 规则数组
 rules=("direct" "proxy" "reject" "private" "apple" "icloud" "google" "gfw" "tld-not-cn" "telegramcidr" "lancidr" "cncidr" "applications")
