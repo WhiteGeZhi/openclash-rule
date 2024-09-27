@@ -46,3 +46,4 @@ payload:
   - '+.proxmox.com'
   - '+.jellyfin.org'
   - '+.imgccc.com'
+  - '+.docker.io'
