@@ -173,11 +173,18 @@ rule-providers:
     url: "http://git.yulei.icu/yulei/openclash-rule/raw/dev/user-defined-rule/custom_direct.yaml"
     path: ./profiles/rules/custom_direct.yaml
     interval: 21600
+  
+  chatgpt:
+    type: http
+    behavior: domain
+    url: "http://git.yulei.icu/yulei/openclash-rule/raw/dev/user-defined-rule/chatgpt.yaml"
+    path: ./profiles/rules/chatgpt.yaml
+    interval: 21600
+  
 
 rules:
-  - DOMAIN-SUFFIX,openai.com,openai-PROXY
-  - DOMAIN-SUFFIX,chatgpt.com,openai-PROXY
-
+  - RULE-SET,chatgpt,openai-PROXY
+  
   - RULE-SET,custom_proxy,PROXY
   - RULE-SET,custom_direct,DIRECT
   - RULE-SET,applications,DIRECT
