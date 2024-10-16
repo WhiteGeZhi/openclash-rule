@@ -177,7 +177,7 @@ rule-providers:
   chatgpt:
     type: http
     behavior: domain
-    url: "http://git.yulei.icu/yulei/openclash-rule/raw/dev/user-defined-rule/chatgpt.yaml"
+    url: "http://git.yulei.icu/yulei/openclash-rule/raw/dev/user-defined-rule/special-rules/chatgpt.yaml"
     path: ./profiles/rules/chatgpt.yaml
     interval: 21600
   
