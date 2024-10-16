@@ -1,0 +1,195 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: silent
+external-controller: 0.0.0.0:9090
+
+proxy-providers:
+  金坷垃:
+    type: http
+    path: "./proxy_provider/金坷垃.yaml"
+    url: https://rss2024.jkl-sub.com/link/dfBQZ00wyuwRm1pD?clash=1
+    interval: 3600
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  一元:
+    type: http
+    path: "./proxy_provider/一元.yaml"
+    url: https://api.ytools.cc/sub?target=clash&url=https%3A%2F%2Fsub3.smallstrawberry.com%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3Dxnfh3w4lw4ubez5oayj3x9ad7xrtffac&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=false&tfo=false&expand=true&scv=false&fdn=false&new_name=true
+    interval: 3600
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+proxy-groups:
+- name: PROXY
+  type: select
+  url: http://www.gstatic.com/generate_204
+  interval: 3600
+  use:
+   - 金坷垃
+   - 一元
+  proxies:
+  - DIRECT
+  - "♻️金坷垃"
+  - "♻️一元"
+
+- name: "♻️金坷垃"
+  type: url-test
+  url: http://www.gstatic.com/generate_204
+  interval: 3600
+  use:
+  - 金坷垃
+  proxies:
+  
+- name: "♻️一元"
+  type: url-test
+  url: http://www.gstatic.com/generate_204
+  interval: 3600
+  use:
+  - 一元
+  proxies:
+  
+- name: openai-PROXY
+  type: select
+  url: http://www.gstatic.com/generate_204
+  interval: 3600
+  use:
+   - 金坷垃
+
+rule-providers:
+#直连域名列表
+  direct:
+    type: http
+    behavior: domain
+    url: "https://git.yulei.icu/yulei/openclash-rule/raw/dev/auto-update-rule/direct.txt"
+    path: ./profiles/rules/direct.yaml
+    interval: 21600
+#代理域名列表
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://git.yulei.icu/yulei/openclash-rule/raw/dev/auto-update-rule/proxy.txt"
+    path: ./profiles/rules/proxy.yaml
+    interval: 21600
+#广告域名列表
+  reject:
+    type: http
+    behavior: domain
+    url: "https://git.yulei.icu/yulei/openclash-rule/raw/dev/auto-update-rule/reject.txt"
+    path: ./profiles/rules/reject.yaml
+    interval: 21600
+#私有网络专用域名列表
+  private:
+    type: http
+    behavior: domain
+    url: "https://git.yulei.icu/yulei/openclash-rule/raw/dev/auto-update-rule/private.txt"
+    path: ./profiles/rules/private.yaml
+    interval: 21600
+#Apple 在中国大陆可直连的域名列表
+  apple:
+    type: http
+    behavior: domain
+    url: "https://git.yulei.icu/yulei/openclash-rule/raw/dev/auto-update-rule/apple.txt"
+    path: ./profiles/rules/apple.yaml
+    interval: 21600
+#iCloud 域名列表
+  icloud:
+    type: http
+    behavior: domain
+    url: "https://git.yulei.icu/yulei/openclash-rule/raw/dev/auto-update-rule/icloud.txt"
+    path: ./profiles/rules/icloud.yaml
+    interval: 21600
+# [慎用]Google 在中国大陆可直连的域名列表
+  google:
+    type: http
+    behavior: domain
+    url: "https://git.yulei.icu/yulei/openclash-rule/raw/dev/auto-update-rule/google.txt"
+    path: ./profiles/rules/google.yaml
+    interval: 21600
+#GFWList 域名列表
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://git.yulei.icu/yulei/openclash-rule/raw/dev/auto-update-rule/gfw.txt"
+    path: ./profiles/rules/gfw.yaml
+    interval: 21600
+#非中国大陆使用的顶级域名列表
+  tld-not-cn:
+    type: http
+    behavior: domain
+    url: "https://git.yulei.icu/yulei/openclash-rule/raw/dev/auto-update-rule/tld-not-cn.txt"
+    path: ./profiles/rules/tld-not-cn.yaml
+    interval: 21600
+#Telegram 使用的 IP 地址列表
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://git.yulei.icu/yulei/openclash-rule/raw/dev/auto-update-rule/telegramcidr.txt"
+    path: ./profiles/rules/telegramcidr.yaml
+    interval: 21600
+#局域网 IP 及保留 IP 地址列表
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: "https://git.yulei.icu/yulei/openclash-rule/raw/dev/auto-update-rule/lancidr.txt"
+    path: ./profiles/rules/lancidr.yaml
+    interval: 21600
+#中国大陆 IP 地址列表
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://git.yulei.icu/yulei/openclash-rule/raw/dev/auto-update-rule/cncidr.txt"
+    path: ./profiles/rules/cncidr.yaml
+    interval: 21600
+#需要直连的常见软件列表
+  applications:
+    type: http
+    behavior: classical
+    url: "https://git.yulei.icu/yulei/openclash-rule/raw/dev/auto-update-rule/applications.txt"
+    path: ./profiles/rules/applications.yaml
+    interval: 21600
+#R18
+  NSFW:
+    type: http
+    behavior: domain
+    url: "https://raw.githubusercontent.com/tanmoumou252/NSFW-website-rule-for-Clash/main/NSFW.yaml"
+    path: ./profiles/rules/NSFW.yaml
+    interval: 21600
+#个人自定义（需要代理）
+  custom_proxy:
+    type: http
+    behavior: domain
+    url: "http://git.yulei.icu/yulei/openclash-rule/raw/dev/user-defined-rule/custom_proxy.yaml"
+    path: ./profiles/rules/custom_proxy.yaml
+    interval: 21600
+##个人自定义（不需要代理）
+  custom_direct:
+    type: http
+    behavior: domain
+    url: "http://git.yulei.icu/yulei/openclash-rule/raw/dev/user-defined-rule/custom_direct.yaml"
+    path: ./profiles/rules/custom_direct.yaml
+    interval: 21600
+
+rules:
+  - DOMAIN-SUFFIX,openai.com,openai-PROXY
+  - DOMAIN-SUFFIX,chatgpt.com,openai-PROXY
+
+  - RULE-SET,custom_proxy,PROXY
+  - RULE-SET,custom_direct,DIRECT
+  - RULE-SET,applications,DIRECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,reject,REJECT
+  - RULE-SET,tld-not-cn,PROXY
+  - RULE-SET,gfw,PROXY
+  - RULE-SET,telegramcidr,PROXY
+  - RULE-SET,NSFW,PROXY
+#  - RULE-SET,game66,DIRECT
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,DIRECT
