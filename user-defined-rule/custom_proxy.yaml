@@ -38,7 +38,7 @@ payload:
   - '+.missav.com'
   - DOMAIN-KEYWORD,u9a9
   - DOMAIN-KEYWORD,u9img
-  - 'pixel.onaudience.com'
+  - '+.pixel.onaudience.com'
   - '+.godaddy.com'
   - '+.freenom.com'
   - '+.fanbox.cc'
