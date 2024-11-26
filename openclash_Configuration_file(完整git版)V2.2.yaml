@@ -53,7 +53,7 @@ proxy-groups:
   - 一元
   proxies:
   
-- name: openai-PROXY
+- name: Special-PROXY
   type: select
   url: http://www.gstatic.com/generate_204
   interval: 3600
@@ -173,18 +173,17 @@ rule-providers:
     url: "http://git.yulei.icu/yulei/openclash-rule/raw/dev/user-defined-rule/custom_direct.yaml"
     path: ./profiles/rules/custom_direct.yaml
     interval: 21600
-  
-  chatgpt:
+##特殊规则  
+  special-rule:
     type: http
     behavior: domain
-    url: "http://git.yulei.icu/yulei/openclash-rule/raw/dev/user-defined-rule/special-rules/chatgpt.yaml"
-    path: ./profiles/rules/chatgpt.yaml
+    url: "http://git.yulei.icu/yulei/openclash-rule/raw/dev/user-defined-rule/special-rules/special-rule.yaml"
+    path: ./profiles/rules/special-rule.yaml
     interval: 21600
   
 
 rules:
-  - RULE-SET,chatgpt,openai-PROXY
-  
+  - RULE-SET,special-rule,Special-PROXY
   - RULE-SET,custom_proxy,PROXY
   - RULE-SET,custom_direct,DIRECT
   - RULE-SET,applications,DIRECT
