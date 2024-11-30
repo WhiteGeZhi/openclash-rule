@@ -15,15 +15,15 @@ proxy-providers:
       enable: true
       url: http://www.gstatic.com/generate_204
       interval: 300
-  一元:
-    type: http
-    path: "./proxy_provider/一元.yaml"
-    url: https://api.ytools.cc/sub?target=clash&url=https%3A%2F%2Fsub3.smallstrawberry.com%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3Dxnfh3w4lw4ubez5oayj3x9ad7xrtffac&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=false&tfo=false&expand=true&scv=false&fdn=false&new_name=true
-    interval: 3600
-    health-check:
-      enable: true
-      url: http://www.gstatic.com/generate_204
-      interval: 300
+  # 一元:
+  #   type: http
+  #   path: "./proxy_provider/一元.yaml"
+  #   url: https://api.ytools.cc/sub?target=clash&url=https%3A%2F%2Fsub3.smallstrawberry.com%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3Dxnfh3w4lw4ubez5oayj3x9ad7xrtffac&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=false&tfo=false&expand=true&scv=false&fdn=false&new_name=true
+  #   interval: 3600
+  #   health-check:
+  #     enable: true
+  #     url: http://www.gstatic.com/generate_204
+  #     interval: 300
 proxy-groups:
 - name: PROXY
   type: select
@@ -31,11 +31,11 @@ proxy-groups:
   interval: 3600
   use:
    - 金坷垃
-   - 一元
+  #  - 一元
   proxies:
   - DIRECT
   - "♻️金坷垃"
-  - "♻️一元"
+  # - "♻️一元"
 
 - name: "♻️金坷垃"
   type: url-test
@@ -45,13 +45,13 @@ proxy-groups:
   - 金坷垃
   proxies:
   
-- name: "♻️一元"
-  type: url-test
-  url: http://www.gstatic.com/generate_204
-  interval: 3600
-  use:
-  - 一元
-  proxies:
+# - name: "♻️一元"
+#   type: url-test
+#   url: http://www.gstatic.com/generate_204
+#   interval: 3600
+#   use:
+#   - 一元
+#   proxies:
   
 - name: Special-PROXY
   type: select
