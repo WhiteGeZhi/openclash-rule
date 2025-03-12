@@ -12,7 +12,7 @@ steps:
       ssh_key:
         from_secret: GITEE  # 从 Drone 的密钥管理中获取 SSH 私钥
       remote: git@gitee.com:Colombeblanche/openclash-rule.git
-      branch: master
+      branch: main
       commit: true
       commit_message: "Deploy changes [skip ci]"
       author_name: yulei
