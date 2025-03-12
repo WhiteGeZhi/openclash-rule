@@ -1,3 +1,22 @@
 kind: pipeline
 type: docker
-name: greeting
+name: default
+
+workspace:
+  path: /drone/src
+
+steps:
+  - name: git-push
+    image: appleboy/drone-git-push
+    settings:
+      ssh_key:
+        from_secret: GITEE  # 从 Drone 的密钥管理中获取 SSH 私钥
+      remote: git@gitee.com:Colombeblanche/openclash-rule.git
+      branch: master
+      commit: true
+      commit_message: "Deploy changes [skip ci]"
+      author_name: yulei
+      author_email: yulei5024@gmail.com
+      force: true
+      followtags: true
+      tag: v1.0.0  # 可选，如果需要推送标签
