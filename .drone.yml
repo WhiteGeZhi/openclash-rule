@@ -9,7 +9,7 @@ steps:
   - name: git-push
     image: appleboy/drone-git-push
     commands:
-      - git clone --depth=1 --branch=dev https://git.yulei.icu/yulei/openclash-rule.git /drone/src
+      - git clone --depth=1 --branch=dev http://git.yulei.icu/yulei/openclash-rule.git /drone/src
       - git config --global http.sslVerify false
     settings:
       ssh_key:
