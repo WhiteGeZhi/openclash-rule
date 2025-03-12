@@ -1,4 +1,5 @@
 #!/bin/bash
+#配置区
 OUTPUT_DIR="/home/Personal-project/openclash-special-rule/openclash-rule/auto-special-rule/"
 LOG_FILE="/var/log/my_script.log"
 GIT_REPO_DIR="/home/Personal-project/openclash-special-rule/openclash-rule"
