@@ -1,5 +1,5 @@
 #!/bin/bash
-OUTPUT_DIR="/root/Personal-project/openclash-special-rule/openclash-rule/auto-special-rule/"
+OUTPUT_DIR="/home/Personal-project/openclash-special-rule/openclash-rule/auto-special-rule/"
 LOG_FILE="/var/log/my_script.log"
 GIT_REPO_DIR="/root/Personal-project/openclash-special-rule/openclash-rule"
 
