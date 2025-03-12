@@ -2,9 +2,9 @@
 
 # 配置区
 BASE_URL="https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/"
-OUTPUT_DIR="/root/Personal-project/openclash-rule/auto-update-rule/"
+OUTPUT_DIR="/home/Personal-project/openclash-rule/auto-update-rule/"
 LOG_FILE="/var/log/my_script.log"
-GIT_REPO_DIR="/root/Personal-project/openclash-rule/"
+GIT_REPO_DIR="/home/Personal-project/openclash-rule/"
 
 # 初始化日志
 > "$LOG_FILE"
