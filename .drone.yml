@@ -8,9 +8,6 @@ workspace:
 steps:
   - name: git-push
     image: appleboy/drone-git-push
-    commands:
-      - git config --global http.sslVerify false
-      - git clone --depth=1 --branch=dev https://git.yulei.icu/yulei/openclash-rule.git /drone/src
     settings:
       ssh_key:
         from_secret: GITEE  # 从 Drone 的密钥管理中获取 SSH 私钥
