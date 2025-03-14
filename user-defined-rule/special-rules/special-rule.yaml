@@ -2,3 +2,4 @@ payload:
   - '+.openai.com'
   - '+.chatgpt.com'
   - '+.mikanani.me'
+  - '+.docker.io'

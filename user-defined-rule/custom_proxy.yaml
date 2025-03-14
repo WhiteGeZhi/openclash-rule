@@ -46,7 +46,6 @@ payload:
   - '+.proxmox.com'
   - '+.jellyfin.org'
   - '+.imgccc.com'
-  - '+.docker.io'
   - '+.u99.pics'
   - '+.filesamples.com'
   - '+.u9a9.link'
