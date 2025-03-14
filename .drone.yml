@@ -6,17 +6,10 @@ workspace:
   path: /drone/src
 
 steps:
-  - name: git-push
-    image: appleboy/drone-git-push
-    settings:
-      ssh_key:
-        from_secret: GITEE  # 从 Drone 的密钥管理中获取 SSH 私钥
-      remote: git@gitee.com:Colombeblanche/openclash-rule.git
-      branch: main
-      commit: true
-      commit_message: "Deploy changes [skip ci]"
-      author_name: yulei
-      author_email: yulei5024@gmail.com
-      force: true
-      followtags: true
-      tag: v1.0.0  # 可选，如果需要推送标签
+- name: dingtalk
+  image: lddsb/drone-dingtalk-message
+  settings:
+    token: e6a8fb84948590317c8220f3c8408d9b301b34ceb766c667613f3843688b23d8
+    type: markdown
+    secret: G
+    sha_link: https://git.yulei.icu/yulei/openclash-rule
