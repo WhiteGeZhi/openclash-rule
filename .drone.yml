@@ -12,4 +12,5 @@ steps:
     token: e6a8fb84948590317c8220f3c8408d9b301b34ceb766c667613f3843688b23d8
     type: markdown
     secret: G
+    tpl : https://git.yulei.icu/yulei/openclash-rule/raw/branch/dev/markdown.tpl
     sha_link: https://git.yulei.icu/yulei/openclash-rule
