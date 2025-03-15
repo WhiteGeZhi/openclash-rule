@@ -6,4 +6,5 @@
 ### 提交人: [TPL_AUTHOR_NAME]
 ### 当前提交的sha: [TPL_COMMIT_SHA]
 当前编译的链接:[TPL_BUILD_LINK]
+
 当前仓库的远程地址:[TPL_REPO_REMOTE_URL]
