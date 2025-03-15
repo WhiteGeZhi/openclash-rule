@@ -5,6 +5,8 @@ name: default
 workspace:
   path: /drone/src
 
+branches: dev
+
 steps:
 - name: dingtalk
   image: lddsb/drone-dingtalk-message
