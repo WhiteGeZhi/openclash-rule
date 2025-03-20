@@ -17,15 +17,15 @@ steps:
     tpl : https://git.yulei.icu/yulei/openclash-rule/raw/branch/dev/markdown.tpl
     sha_link: https://git.yulei.icu/yulei/openclash-rule
 
-- name: git-push
-  image: appleboy/drone-git-push
-  settings:
-    branch: dev
-    remote: git@gitee.com:Colombeblanche/openclash-rule.git
-    ssh_key:
-      from_secret: gitee-ssh-key
-    local_branch: dev
-    force: true
-    commit: true
-    author_name: yueli
-    author_email: yulei5024@gmail.com
+# - name: git-push
+#   image: appleboy/drone-git-push
+#   settings:
+#     branch: dev
+#     remote: git@gitee.com:Colombeblanche/openclash-rule.git
+#     ssh_key:
+#       from_secret: gitee-ssh-key
+#     local_branch: dev
+#     force: true
+#     commit: true
+#     author_name: yueli
+#     author_email: yulei5024@gmail.com
