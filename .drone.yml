@@ -20,11 +20,11 @@ steps:
 - name: send
   image: plugins/webhook
   settings:
-    urls: https://webhook.service.yulei.icu/webhook/ask?secret=5e4EymRdf0SsFT9O
+    urls: http://192.168.31.20:8066/prod-webhook?secret=5e4EymRdf0SsFT9O
     template:
           {
               "accept_title": "open-clash规则更新完成",
-              "accept_desp": "open-clash规则更新完成"
+              "accept_desp": "open-clash规则更新完成",
           }
 
 
