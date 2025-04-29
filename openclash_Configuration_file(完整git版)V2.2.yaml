@@ -9,7 +9,7 @@ proxy-providers:
   金坷垃:
     type: http
     path: "./proxy_provider/金坷垃.yaml"
-    url: https://rss2024.jkl-sub.com/link/dfBQZ00wyuwRm1pD?clash=1
+    url:
     interval: 3600
     health-check:
       enable: true
