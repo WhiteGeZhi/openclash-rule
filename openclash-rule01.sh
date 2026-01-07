@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 配置区
-BASE_URL="https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/"
+BASE_URL="https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/"
 OUTPUT_DIR="/data/personal_project/openclash-rule/auto-update-rule/"
 LOG_FILE="/var/log/my_script.log"
 GIT_REPO_DIR="/data/personal_project/openclash-rule/"
@@ -51,6 +51,7 @@ for rule in "${rules[@]}"; do
   if ! download_and_save "$rule" &> /dev/null; then
     failed_downloads+=("$rule")
   fi
+  sleep 5
 done
 
 # 检查是否有下载失败的规则
